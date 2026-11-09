@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéStats</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="nav-logo">
+                <svg xmlns="http://w3.org" viewBox="0 0 480 120" width="100%" height="100%">
+                    <defs>
+                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.6" />
+                        </filter>
+                    </defs>
+                    <style>
+                        .text-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 44px; fill: #ffffff; letter-spacing: -1.5px; }
+                        .text-subtitle { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; fill: #ffffff; opacity: 0.5; letter-spacing: 5px; }
+                        .emblem-bg { fill: #000000; stroke: #ffffff; stroke-width: 3; filter: url(#shadow); }
+                        .pika-art { fill: #ffffff; }
+                        .stat-pillar { fill: #ffffff; rx: 3; }
+                    </style>
+                    <g transform="translate(60, 60)">
+                        <rect x="-42" y="-42" width="84" height="84" rx="20" class="emblem-bg" />
+                        <rect x="-24" y="6" width="12" height="18" class="stat-pillar" opacity="0.3" />
+                        <rect x="-6" y="-4" width="12" height="28" class="stat-pillar" opacity="0.65" />
+                        <rect x="12" y="-16" width="12" height="40" class="stat-pillar" />
+                        <path d="M-8,-10 C-12,-18 12,-18 8,-10 C13,-3 11,6 6,10 C2,13 -2,13 -6,10 C-11,6 -13,-3 -8,-10 Z" class="pika-art" />
+                        <polygon points="-8,-12 -20,-30 -4,-20" class="pika-art" />
+                        <polygon points="8,-12 20,-30 4,-20" class="pika-art" />
+                        <circle cx="0" cy="-26" r="3.5" fill="#000000" stroke="#ffffff" stroke-width="2.5" />
+                    </g>
+                    <g transform="translate(140, 72)">
+                        <text x="0" y="0" class="text-title">Poké<tspan style="font-weight: 300; fill: #ffffff;">Stats</tspan></text>
+                        <text x="3" y="22" class="text-subtitle">Pokémon Data & Stats</text>
+                    </g>
+                </svg>
+            </span>
+            <ul class="nav-menu">
+                <li><a href="#" id="navDashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="#" id="navFavorites" class="nav-link">Disukai (<span id="JumlahFavorit">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Halaman Utama / Dashboard -->
+    <main id="Dashboard" class="Section">
+        <h1 class="Dash-title">Daftar Pokémon & Statistik</h1>
+        <p class="Dash-subtitle">Cari Pokémon Favoritmu di PokéStats!</p>
+
+        <div class="search-container">
+            <input type="text" id="SearchBar" class="search-bar" placeholder="Cari nama Pokémon (Contoh: pikachu)...">
+            <button id="searchBtn" class="btn btn-search">Cari</button>
+            <button id="resetBtn" class="btn" style="display: none;">Kembali</button>
+        </div>
+
+        <div class="card-grid" id="pokemonContainer">
+            <div class="status-message">Memproses Data Pokémon...</div>
+        </div>
+
+        <div class="next-before-container" id="NextBeforeContainer">
+            <button id="prevBtn" class="btn" disabled>← Sebelumnya</button>
+            <button id="nextBtn" class="btn">Selanjutnya →</button>
+        </div>
+    </main>
+
+    <!-- Halaman Favorit -->
+    <main id="viewFavorites" class="view-section" style="display: none;">
+        <h1 class="page-title">Pokémon yang Disukai</h1>
+        <p class="page-subtitle">Daftar Pokémon favorit yang telah kamu simpan.</p>
+        <div class="card-grid" id="favoritesContainer"></div>
+    </main>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
